@@ -1,0 +1,237 @@
+.page {
+  --ugc-bg: #f4f7f5;
+  --ugc-text-muted: #5a6b63;
+  --ugc-font: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --ugc-font-size: clamp(1rem, 2.2vw, 1.125rem);
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ugc-bg);
+  font-family: var(--ugc-font);
+  font-size: var(--ugc-font-size);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ugc-text-muted);
+  overflow-x: hidden;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb1,
+.orb2,
+.orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.orb1 {
+  width: min(55vw, 520px);
+  height: min(55vw, 520px);
+  top: -12%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(61, 217, 160, 0.35) 0%, transparent 70%);
+}
+
+.orb2 {
+  width: min(45vw, 400px);
+  height: min(45vw, 400px);
+  bottom: -10%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(99, 179, 237, 0.18) 0%, transparent 70%);
+}
+
+.orb3 {
+  width: 280px;
+  height: 280px;
+  top: 42%;
+  left: 38%;
+  background: radial-gradient(circle, rgba(31, 166, 122, 0.12) 0%, transparent 70%);
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(10, 15, 13, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 15, 13, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+}
+
+.emojiField {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.emoji {
+  position: absolute;
+  line-height: 1;
+  user-select: none;
+  opacity: 0;
+  filter: saturate(1.05);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.emojiDrift {
+  animation-name: emojiDrift;
+}
+
+.emojiBob {
+  animation-name: emojiBob;
+}
+
+.emojiSpin {
+  animation-name: emojiSpin;
+}
+
+@keyframes emojiDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.42;
+  }
+  50% {
+    transform: translate(var(--drift-x), var(--drift-y)) rotate(var(--rotate))
+      scale(1.08);
+    opacity: 0.48;
+  }
+  88% {
+    opacity: 0.32;
+  }
+  100% {
+    transform: translate(calc(var(--drift-x) * -0.6), calc(var(--drift-y) * -0.4))
+      rotate(calc(var(--rotate) * -0.5)) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes emojiBob {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(calc(var(--drift-y) * -1)) scale(1.12);
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.38;
+  }
+}
+
+@keyframes emojiSpin {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.88);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(var(--drift-x), 0) rotate(calc(var(--rotate) * 2))
+      scale(1.05);
+    opacity: 0.46;
+  }
+  85% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(calc(var(--drift-x) * 0.5), var(--drift-y))
+      rotate(calc(var(--rotate) * 3)) scale(0.92);
+    opacity: 0;
+  }
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 34rem;
+  text-align: center;
+  align-items: center;
+  font: inherit;
+}
+
+.description,
+.copyright,
+.madeIn {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.description {
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font: inherit;
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .description,
+  .legal {
+    animation: none;
+    opacity: 1;
+  }
+
+  .emoji {
+    animation: none;
+    opacity: 0.22;
+  }
+}
+
