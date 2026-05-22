@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const SITE_NAME = "UGC.AM";
 
 export const SEO_TITLE =
-  "UGC.AM — User-Generated Content Platform | Coming Soon";
+    "UGC.AM | Օգտատերերի կողմից ստեղծվող բովանդակության հարթակ | Շուտով"
 
 export const SEO_DESCRIPTION =
-  "UGC.AM is a user-generated content platform for brands and creators — launch campaigns, collect authentic UGC, approve content, and track performance. Coming soon. Made in Armenia.";
+  "UGC.AM-ը համախմբում է բրենդներին և կոնտենտ ստեղծողներին մեկ միասնական աշխատանքային միջավայրում՝ ստեղծելով արդյունավետ համագործակցության նոր ձևաչափ։";
 
 /** Visible on-page copy (matches SEO theme) */
 export const PAGE_DESCRIPTION =
-  "UGC.AM unites brands and creators in one workspace — launch campaigns, collect authentic UGC, approve content, and track performance without switching tools.";
+  "UGC.AM-ը համախմբում է բրենդներին և կոնտենտ ստեղծողներին մեկ միասնական աշխատանքային միջավայրում՝ ստեղծելով արդյունավետ համագործակցության նոր ձևաչափ։";
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL("https://ugc.am"),
