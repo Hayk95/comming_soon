@@ -26,6 +26,9 @@ const REACTION_EMOJIS = [
   "⚡",
 ] as const;
 
+/** Fixed seed so SSR and client render the same particle layout (no hydration mismatch). */
+const PARTICLE_SEED = 0x75637a;
+
 type AnimationVariant = "drift" | "bob" | "spin";
 
 type EmojiParticle = {
@@ -42,20 +45,22 @@ type EmojiParticle = {
   variant: AnimationVariant;
 };
 
-function randomBetween(min: number, max: number) {
-  return min + Math.random() * (max - min);
+function createSeededRandom(seed: number) {
+  let state = seed >>> 0;
+  return () => {
+    state = (Math.imul(1_664_525, state) + 1_013_904_223) >>> 0;
+    return state / 0x1_0000_0000;
+  };
 }
 
-function pickEmoji() {
-  return REACTION_EMOJIS[Math.floor(Math.random() * REACTION_EMOJIS.length)]!;
-}
-
-function createParticles(count: number): EmojiParticle[] {
+function createParticles(count: number, seed: number): EmojiParticle[] {
+  const random = createSeededRandom(seed);
+  const randomBetween = (min: number, max: number) => min + random() * (max - min);
   const variants: AnimationVariant[] = ["drift", "bob", "spin"];
 
   return Array.from({ length: count }, (_, id) => ({
     id,
-    emoji: pickEmoji(),
+    emoji: REACTION_EMOJIS[Math.floor(random() * REACTION_EMOJIS.length)]!,
     left: randomBetween(1, 96),
     top: randomBetween(2, 95),
     size: randomBetween(1.1, 2.4),
@@ -64,7 +69,7 @@ function createParticles(count: number): EmojiParticle[] {
     driftX: randomBetween(-55, 55),
     driftY: randomBetween(-45, 45),
     rotation: randomBetween(-30, 30),
-    variant: variants[Math.floor(Math.random() * variants.length)]!,
+    variant: variants[Math.floor(random() * variants.length)]!,
   }));
 }
 
@@ -79,7 +84,10 @@ type FloatingReactionEmojisProps = {
 };
 
 export function FloatingReactionEmojis({ count = 26 }: FloatingReactionEmojisProps) {
-  const particles = useMemo(() => createParticles(count), [count]);
+  const particles = useMemo(
+    () => createParticles(count, PARTICLE_SEED),
+    [count],
+  );
 
   return (
     <div className={styles.emojiField} aria-hidden="true">

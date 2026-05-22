@@ -1,17 +1,14 @@
 import { FloatingReactionEmojis } from "@/components/coming-soon/FloatingReactionEmojis";
+import { LogoContainer } from "@/components/coming-soon/LogoContainer";
 import { PAGE_DESCRIPTION } from "@/lib/seo";
 import styles from "@/styles/coming-soon.module.css";
 
 export function ComingSoonPage() {
   return (
     <div className={styles.page}>
-      <div className={styles.ambient} aria-hidden="true">
-        <div className={styles.orb1} />
-        <div className={styles.orb2} />
-        <div className={styles.orb3} />
-        <div className={styles.gridOverlay} />
-        <FloatingReactionEmojis />
-      </div>
+  
+
+      <LogoContainer />
 
       <main className={styles.main}>
         <div className={styles.content}>

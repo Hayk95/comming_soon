@@ -1,6 +1,8 @@
 .page {
-  --ugc-bg: #f4f7f5;
-  --ugc-text-muted: #5a6b63;
+  --ugc-primary: #fd1645;
+  --ugc-primary-rgb: 253, 22, 69;
+  --ugc-bg: #faf7f8;
+  --ugc-text-muted: #5c5256;
   --ugc-font: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --ugc-font-size: clamp(1rem, 2.2vw, 1.125rem);
 
@@ -39,7 +41,11 @@
   height: min(55vw, 520px);
   top: -12%;
   right: -8%;
-  background: radial-gradient(circle, rgba(61, 217, 160, 0.35) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(var(--ugc-primary-rgb), 0.28) 0%,
+    transparent 70%
+  );
 }
 
 .orb2 {
@@ -47,7 +53,11 @@
   height: min(45vw, 400px);
   bottom: -10%;
   left: -12%;
-  background: radial-gradient(circle, rgba(99, 179, 237, 0.18) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(var(--ugc-primary-rgb), 0.14) 0%,
+    transparent 70%
+  );
 }
 
 .orb3 {
@@ -55,7 +65,11 @@
   height: 280px;
   top: 42%;
   left: 38%;
-  background: radial-gradient(circle, rgba(31, 166, 122, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(var(--ugc-primary-rgb), 0.1) 0%,
+    transparent 70%
+  );
 }
 
 .gridOverlay {
@@ -163,6 +177,57 @@
   }
 }
 
+.logoContainer {
+  z-index: 2;
+  pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  transform: rotate(var(--logo-rot, 0deg)) scale(0.9);
+  animation: logoEnter 0.85s ease-in-out forwards;
+}
+
+.logoTopRight {
+  top: -30px;
+  right: -90px;
+  --logo-rot: -130deg;
+}
+
+.logoBottomRight {
+  bottom: -30px;
+  right: -90px;
+  --logo-rot: -53deg;
+}
+
+.logoTopLeft {
+  top: -30px;
+  left: -90px;
+  --logo-rot: 130deg;
+}
+
+.logoBottomLeft {
+  bottom: -30px;
+  left: -90px;
+  --logo-rot: 53deg;
+}
+
+@keyframes logoEnter {
+  from {
+    opacity: 0;
+    transform: rotate(var(--logo-rot, 0deg)) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(var(--logo-rot, 0deg)) scale(1);
+  }
+}
+
+.logoMark {
+  display: block;
+  width: clamp(140px, 42vw, 280px);
+  height: auto;
+  flex-shrink: 0;
+}
+
 .main {
   position: relative;
   z-index: 1;
@@ -222,7 +287,138 @@
   }
 }
 
+/* Mobile & small screens */
+@media (max-width: 767px) {
+  .page {
+    --ugc-font-size: clamp(0.9375rem, 3.8vw, 1.0625rem);
+    overflow-x: hidden;
+  }
+
+  .orb1 {
+    width: 70vw;
+    height: 70vw;
+    right: -20%;
+  }
+
+  .orb2 {
+    width: 60vw;
+    height: 60vw;
+    left: -25%;
+  }
+
+  .orb3 {
+    width: 50vw;
+    height: 50vw;
+    left: 25%;
+  }
+
+  .gridOverlay {
+    background-size: 32px 32px;
+  }
+
+  .emojiField {
+    transform: scale(0.92);
+    transform-origin: center center;
+  }
+
+  .logoMark {
+    width: clamp(88px, 28vw, 140px);
+  }
+
+  .logoTopRight {
+    top: -14px;
+    right: -42px;
+  }
+
+  .logoBottomRight {
+    bottom: -14px;
+    right: -42px;
+  }
+
+  .logoTopLeft {
+    top: -14px;
+    left: -42px;
+  }
+
+  .logoBottomLeft {
+    bottom: -14px;
+    left: -42px;
+  }
+
+  .main {
+    flex: 1;
+    justify-content: center;
+    padding: max(5rem, calc(4.5rem + env(safe-area-inset-top, 0px))) max(
+        1rem,
+        env(safe-area-inset-right, 0px)
+      )
+      max(1.75rem, env(safe-area-inset-bottom, 0px))
+      max(1rem, env(safe-area-inset-left, 0px));
+  }
+
+  .content {
+    gap: 1rem;
+    max-width: 100%;
+    padding-inline: 0.5rem;
+  }
+
+  .description {
+    line-height: 1.6;
+    max-width: 20rem;
+    text-wrap: pretty;
+  }
+
+  .legal {
+    gap: 0.75rem;
+  }
+
+  .madeIn {
+    font-size: 0.875em;
+  }
+}
+
+@media (max-width: 390px) {
+  .logoMark {
+    width: clamp(76px, 24vw, 112px);
+  }
+
+  .logoTopRight {
+    top: -10px;
+    right: -32px;
+  }
+
+  .logoBottomRight {
+    bottom: -10px;
+    right: -32px;
+  }
+
+  .logoTopLeft {
+    top: -10px;
+    left: -32px;
+  }
+
+  .logoBottomLeft {
+    bottom: -10px;
+    left: -32px;
+  }
+
+  .main {
+    padding-top: max(4.25rem, calc(3.75rem + env(safe-area-inset-top, 0px)));
+  }
+
+  .description {
+    max-width: 100%;
+    padding-inline: 0.25rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .logoContainer {
+    animation: none;
+    opacity: 1;
+    transform: rotate(var(--logo-rot, 0deg)) scale(1);
+  }
+
   .description,
   .legal {
     animation: none;
