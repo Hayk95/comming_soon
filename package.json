@@ -2,11 +2,15 @@
   "name": "coming_soon",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node -e \"const v=require('next/package.json').version; if(!v.startsWith('16.')) { console.error('Wrong Next.js version:', v, '- run npm ci'); process.exit(1); }\""
   },
   "dependencies": {
     "next": "16.2.6",
