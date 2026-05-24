@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 export const SITE_NAME = "UGC.AM";
 
 export const SEO_TITLE =
-    "UGC.AM | Օգտատերերի կողմից ստեղծվող բովանդակության հարթակ | Շուտով"
+    "UGC.AM | Ստեղծիր և կառավարիր UGC արշավներ մեկ հարթակում | Շուտով"
 
 export const SEO_DESCRIPTION =
-  "UGC.AM-ը համախմբում է բրենդներին և կոնտենտ ստեղծողներին մեկ միասնական աշխատանքային միջավայրում՝ ստեղծելով արդյունավետ համագործակցության նոր ձևաչափ։";
+  "UGC.AM-ը օգնում է բրենդներին և ստեղծողներին համագործակցել, ստեղծել արշավներ և ստանալ որակյալ UGC կոնտենտ արագ և հեշտ։";
 
 /** Visible on-page copy (matches SEO theme) */
 export const PAGE_DESCRIPTION =
