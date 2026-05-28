@@ -1,22 +1,32 @@
-import { FloatingReactionEmojis } from "@/components/coming-soon/FloatingReactionEmojis";
-import { LogoContainer } from "@/components/coming-soon/LogoContainer";
-import { PAGE_DESCRIPTION } from "@/lib/seo";
+import { HeroBackgroundVideo } from "@/components/coming-soon/HeroBackgroundVideo";
+import { NotifyForm } from "@/components/coming-soon/NotifyForm";
+import { UgcLogo } from "@/components/ugc/UgcLogo";
+import { PAGE_SUBTITLE, PAGE_TAGLINE, PAGE_TITLE } from "@/lib/seo";
 import styles from "@/styles/coming-soon.module.css";
 
 export function ComingSoonPage() {
   return (
     <div className={styles.page}>
-  
+      <HeroBackgroundVideo />
 
-      <LogoContainer />
+      <main className={styles.content} aria-labelledby="coming-soon-title">
+        <UgcLogo className={styles.logo} />
 
-      <main className={styles.main}>
-        <div className={styles.content}>
-          <h1 className={styles.description}>{PAGE_DESCRIPTION}</h1>
-          <div className={styles.legal}>
-            <p className={styles.madeIn}>® Made in Armenia</p>
-          </div>
+        <h1 id="coming-soon-title" className={styles.title}>
+          {PAGE_TITLE}
+        </h1>
+
+        <p className={styles.tagline}>{PAGE_TAGLINE}</p>
+
+        <p className={styles.subtitle}>{PAGE_SUBTITLE}</p>
+
+        <div className={styles.cta}>
+          <NotifyForm />
         </div>
+
+        <footer className={styles.footer}>
+          <p className={styles.madeIn}>® Made in Armenia</p>
+        </footer>
       </main>
     </div>
   );

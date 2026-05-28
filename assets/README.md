@@ -1,11 +1,15 @@
 # Brand logo
 
-Source file: **`ugc_logo.svg`**
+The coming-soon site uses the same lockup as **ugc_web**:
 
-After editing, copy to public (or run):
+- Source: `ugc_web/assets/brand/creoscale-logo-lockup.svg`
+- Public: `public/assets/brand/creoscale-logo-lockup.svg`
+
+After updating brand assets in ugc_web, recopy:
 
 ```bash
-cp assets/ugc_logo.svg public/ugc_logo.svg
+cp ../ugc_web/assets/brand/creoscale-logo-lockup.svg public/assets/brand/creoscale-logo-lockup.svg
+cp ../ugc_web/assets/brand/creoscale-favicon.png public/assets/brand/creoscale-favicon.png
 ```
 
-The site loads `/ugc_logo.svg` as-is — no SVG paths are modified in code.
+Legacy heart-only asset `ugc_logo.svg` is kept for reference but is no longer used in the UI.

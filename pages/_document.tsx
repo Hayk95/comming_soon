@@ -1,13 +1,12 @@
 import { Head, Html, Main, NextScript } from "next/document";
+import { FAVICON_PATH } from "@/lib/seo";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="hy">
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
+        <link rel="icon" href={FAVICON_PATH} type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href={FAVICON_PATH} />
       </Head>
       <body className="min-h-full flex flex-col">
         <Main />

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="640" viewBox="0 0 360 640" fill="none">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="640" x2="360" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#163300"/>
+      <stop offset="0.6" stop-color="#2a4d1a"/>
+      <stop offset="1" stop-color="#0e0f0c"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="640" rx="28" fill="url(#bg3)"/>
+  <rect x="40" y="160" width="280" height="320" rx="18" fill="#fff" fill-opacity="0.08"/>
+  <circle cx="180" cy="300" r="56" fill="#fd1645" fill-opacity="0.35"/>
+  <path d="M168 300l10 10 22-24" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="52" y="88" width="156" height="28" rx="14" fill="#fff" fill-opacity="0.14"/>
+  <text x="68" y="107" fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="600">TikTok / Reels</text>
+  <rect x="52" y="420" width="120" height="36" rx="18" fill="#fd1645"/>
+  <text x="112" y="443" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="700">2.4M views</text>
+  <text x="52" y="488" fill="#fff" fill-opacity="0.85" font-family="Arial,sans-serif" font-size="14" font-weight="700">Hook B — retention spike</text>
+  <text x="52" y="512" fill="#fff" fill-opacity="0.55" font-family="Arial,sans-serif" font-size="12">Paid social ready cut</text>
+</svg>

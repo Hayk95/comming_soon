@@ -1,9 +1,15 @@
 import type { AppProps } from "next/app";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import "@/app/globals.css";
+import "@/styles/globals.css";
 
 const GA_MEASUREMENT_ID = "G-MRSCWTHWR8";
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </Script>
       <div
-        className={`${geistSans.variable} ${geistMono.variable} min-h-full antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} min-h-full antialiased`}
       >
         <Component {...pageProps} />
       </div>
